@@ -3,8 +3,8 @@ This project demonstrates NESTED LOOPS (i.e., loops within loops)
 in the context of PRINTING on the CONSOLE.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Aaron Kondrat.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -54,8 +54,18 @@ def triangle_right_justified(r):
     Precondition:  r is a non-negative integer.
     For purposes of "lining up", assume r is a single digit.
     """
+    numbers = []
+    for k in range(r):
+        numbers = numbers + [k+1]
+    for k in range(r):
+        for _ in range(r-k-1):
+            print(' ', end='')
+        for j in range(k+1):
+            print(numbers[j], end='')
+        print('')
+
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # HINT: Do the following problem FIRST, then convert x's to spaces:
@@ -108,8 +118,17 @@ def triangle_upside_down(r):
     Precondition:  r is a non-negative integer.
     For purposes of "lining up", assume r is a single digit.
     """
+    numbers = []
+    for k in range(r):
+        numbers = numbers + [k+1]
+    for j in range(r):
+        for _ in range(j):
+            print(' ', end='')
+        for i in range(r-j):
+            print(numbers[i], end='')
+        print('')
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -159,8 +178,26 @@ def vee(r):
     Precondition:  r is a non-negative integer.
     For purposes of "lining up", assume r is a single digit.
     """
+    numbers = []
+    numbers2 = []
+    move_on = 0
+    for k in range(r):
+        numbers = numbers + [k + 1]
+    for k in range(r):
+        numbers2 = numbers2 + [r - k]
+    for j in range(r):
+        for _ in range(j):
+            print(' ', end='')
+        for i in range(r - j):
+            print(numbers[i], end='')
+        for _ in range(r):
+            print('-', end='')
+        for x in range(r - j):
+            print(numbers2[x + j], end='')
+            move_on = move_on + 1
+        print('')
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -215,8 +252,17 @@ def numbers_constant_forward(r, maxnum, n):
 
     Preconditions:  r, maxnum and n are positive integers.
     """
+    numbers = []
+    for k in range(maxnum):
+        numbers = numbers + [k + 1]
+    for k in range(r):
+        for j in range(maxnum):
+            for i in range(n):
+                print(numbers[j], end='')
+            print(' ', end='')
+        print('')
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # HINT: What loop structure do you need for this problem?
@@ -259,8 +305,17 @@ def numbers_constant_backwards(r, maxnum, n):
        777 666 555 444 333 222 111
     Preconditions:  r, maxnum and n are positive integers.
     """
+    numbers = []
+    for k in range(maxnum):
+        numbers = numbers + [maxnum - k]
+    for k in range(r):
+        for j in range(maxnum):
+            for i in range(n):
+                print(numbers[j], end='')
+            print(' ', end='')
+        print('')
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -311,8 +366,17 @@ def numbers_increasing_forward(r, maxnum):
 
     Preconditions:  r and maxnum are positive integers.
     """
+    numbers = []
+    for k in range(maxnum):
+        numbers = numbers + [k + 1]
+    for k in range(r):
+        for j in range(maxnum):
+            for i in range(j + 1):
+                print(numbers[j], end='')
+            print(' ', end='')
+        print('')
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
