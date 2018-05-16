@@ -6,6 +6,8 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
          their colleagues and Aaron Kondrat.
 """  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
+import math
+
 
 def main():
     """ Calls the other functions to test them. """
@@ -98,7 +100,7 @@ def largest_number(seq_seq):
 def run_test_largest_negative_number():
     """ Tests the    largest_negative_number    function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  largest_negative_number  function defined below.
     #
     #   Include enough tests to give you confidence that your solution
@@ -108,6 +110,25 @@ def run_test_largest_negative_number():
     print('-------------------------------------------------')
     print('Testing the   LARGEST_NEGATIVE_NUMBER   function:')
     print('-------------------------------------------------')
+
+    # Test 1:
+    expected = -7
+    answer = largest_negative_number([(3, 1, 4),
+                             (13, 10, 11, -7, 10),
+                             [1, 2, 3, 4]])
+    print('Expected and actual are:', expected, answer)
+
+    # Test 2:
+    expected = -2.6
+    answer = largest_negative_number([(30, -5, 8, -20),
+                             (100, -2.6, 88, -40, -5),
+                             (400, 500)])
+    print('Expected and actual are:', expected, answer)
+
+    # Test 3:
+    expected = None
+    answer = largest_negative_number([(200, 2, 20), (500, 400)])
+    print('Expected and actual are:', expected, answer)
 
 
 def largest_negative_number(seq_seq):
@@ -132,20 +153,21 @@ def largest_negative_number(seq_seq):
     and the given argument is a sequence of sequences,
     where each subsequence contains only numbers.
     """
-    greatest = 0
+    greatest = -99999999999999999999999999999999
     change = 0
     for k in range(len(seq_seq)):
         sequence = seq_seq[k]
         for j in range(len(sequence)):
-            if sequence[j] < greatest:
-                greatest = sequence[j]
-                change = change + 1
+            if sequence[j] < 0:
+                if sequence[j] > greatest:
+                    greatest = sequence[j]
+                    change = change + 1
     if change == 0:
         return None
     else:
         return greatest
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # CHALLENGE: Try to solve this problem with no additional sequences
@@ -384,8 +406,18 @@ def first_is_elsewhere_too(seq_seq):
       :type seq_seq: (list, tuple)
     and the given argument is a sequence of sequences.
     """
+    sequence = seq_seq[0]
+    for k in range(len(seq_seq)):
+        for j in range(len(sequence)):
+            value = sequence[j]
+            for i in range(len(seq_seq) - 1):
+                new_sequence = seq_seq[i + 1]
+                for h in range(len(new_sequence)):
+                    if new_sequence[h] == value:
+                        return True
+    return False
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
