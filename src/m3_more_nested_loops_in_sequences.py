@@ -17,7 +17,7 @@ def main():
 def run_test_largest_number():
     """ Tests the    largest_number    function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  largest_number  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     # ------------------------------------------------------------------
@@ -45,6 +45,11 @@ def run_test_largest_number():
 
     # TO DO 2 (continued): Add your ADDITIONAL test(s) here:
 
+    # Test 4:
+    expected = 101.1
+    answer = largest_number(([2, 3, 56, 12], [99, 99, 10, 57, 1, 34], [101.1]))
+    print('Expected and actual are:', expected, answer)
+
 
 def largest_number(seq_seq):
     """
@@ -71,8 +76,21 @@ def largest_number(seq_seq):
     and the given argument is a sequence of sequences,
     where each subsequence contains only numbers.
     """
+    greatest = -9999999999999999999999999999999999999999999999999999999999
+    change = 0
+    for k in range(len(seq_seq)):
+        sequence = seq_seq[k]
+        for j in range(len(sequence)):
+            if sequence[j] > greatest:
+                if change >= 0:
+                    greatest = sequence[j]
+                    change = change + 1
+    if change == 0:
+        return None
+    else:
+        return greatest
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
 
@@ -114,6 +132,18 @@ def largest_negative_number(seq_seq):
     and the given argument is a sequence of sequences,
     where each subsequence contains only numbers.
     """
+    greatest = 0
+    change = 0
+    for k in range(len(seq_seq)):
+        sequence = seq_seq[k]
+        for j in range(len(sequence)):
+            if sequence[j] < greatest:
+                greatest = sequence[j]
+                change = change + 1
+    if change == 0:
+        return None
+    else:
+        return greatest
     # ------------------------------------------------------------------
     # TODO: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
